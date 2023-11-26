@@ -1,4 +1,4 @@
-import { Posts } from '@entities/posts-entity';
+import { Posts } from '@entities/posts.entity';
 import { PostsException } from '@exceptions/app/posts.exception';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';

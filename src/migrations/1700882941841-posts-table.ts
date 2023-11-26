@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { Posts } from '../entities/posts-entity';
+import { Posts } from '../entities/posts.entity';
 import { PostsSeed } from './seeds/posts.seed';
 
 export class PostsTable1700882941841 implements MigrationInterface {

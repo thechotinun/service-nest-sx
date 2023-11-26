@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
-import { Posts } from './src/entities/posts-entity';
+import { Posts } from './src/entities/posts.entity';
 import { PostsTable1700882941841 } from './src/migrations/1700882941841-posts-table';
 
 config();
