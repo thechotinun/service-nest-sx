@@ -17,7 +17,7 @@ import { CreateExampleDto } from '@modules/example/dto/create-example.dto';
 import { UpdateExampleDto } from '@modules/example/dto/update-example.dto';
 import { MyLogger } from '@common/logger/mylogger.service';
 
-@Controller('api/v1/backend/examples')
+@Controller('api/v1/examples')
 export class ExampleController {
   constructor(
     private readonly exampleService: ExampleService,

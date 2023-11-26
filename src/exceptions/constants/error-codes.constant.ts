@@ -10,4 +10,6 @@ export const ErrorCodes: { [key: number]: string } = {
   100103: 'EXAMPLE_CREATE_ERROR',
   100104: 'EXAMPLE_UPDATE_ERROR',
   100105: 'EXAMPLE_EXIST',
+  //
+  100106: 'EXAMPLE_NOT_FOUND',
 };

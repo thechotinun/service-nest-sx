@@ -5,11 +5,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { MulterModule } from '@nestjs/platform-express';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { ExampleModule } from '@modules/example/example.module';
 import TypeOrmConfigService from '@config/typeorm/default';
 import { ExceptionFilter } from '@exceptions/exception.filter';
 import { APP_FILTER } from '@nestjs/core';
 import { LoggerModule } from '@common/logger/mylogger.module';
+import { ExampleModule } from '@modules/example/example.module';
+import { PostsModule } from '@modules/posts/posts.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { LoggerModule } from '@common/logger/mylogger.module';
     }),
     EventEmitterModule.forRoot(),
     ExampleModule,
+    PostsModule,
   ],
   controllers: [],
   providers: [
