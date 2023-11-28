@@ -8,15 +8,15 @@ import { MyLogger } from '@common/logger/mylogger.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const configService = app.get<ConfigService>(ConfigService);
   app.useLogger(app.get(MyLogger));
   app.enableCors({
-    origin: ['http://localhost:3000'],
+    origin: [configService.get<string>('APP_URL')],
     methods: 'GET, PUT, PATCH, POST, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
   });
 
   useContainer(app.select(AppModule), { fallbackOnErrors: true });
-  const configService = app.get<ConfigService>(ConfigService);
 
   const isDevelopmentMode =
     configService.get<'test' | 'develop' | 'production'>('mode') !==
