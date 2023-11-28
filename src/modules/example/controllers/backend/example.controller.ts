@@ -34,7 +34,6 @@ export class ExampleController {
         page,
         limit,
       });
-      this.myLogger.debug(`This Logging is debug`);
       return ApiResource.successResponse(reponse);
     } catch (error) {
       return ApiResource.errorResponse(error);

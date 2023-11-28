@@ -1,11 +1,13 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { PaginateQuery } from '@common/dto/paginate.query';
 import { PostsService } from '@modules/posts/services/posts.service';
 import { ApiResource } from '@common/reponses/api-resource';
 import { UseResources } from 'interceptors/use-resources.interceptor';
 import { PostsResourceDto } from '@modules/posts/resources/posts.resource';
 import { MyLogger } from '@common/logger/mylogger.service';
+import { BackendAuthGuard } from '@common/guards/backend-auth.guard';
 
+@UseGuards(BackendAuthGuard)
 @Controller('api/v1/posts')
 export class PostsController {
   constructor(
@@ -19,14 +21,12 @@ export class PostsController {
     @Query() { page, limit }: PaginateQuery,
   ): Promise<ApiResource> {
     try {
-      this.myLogger.debug(`This Logging is debug`);
       const reponse = await this.postsService.paginate({
         page,
         limit,
       });
       return ApiResource.successResponse(reponse);
     } catch (error) {
-      this.myLogger.error(`This Logging is error`, error);
       return ApiResource.errorResponse(error);
     }
   }

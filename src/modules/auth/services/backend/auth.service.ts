@@ -35,10 +35,7 @@ export class AuthService {
 
     const oAuth: OauthUser = await this.createOauthUser(user);
 
-    return {
-      ...oAuth,
-      user,
-    };
+    return await this.getTokens(oAuth, user.email);
   }
 
   async createOauthUser(user: User): Promise<OauthUser> {
@@ -51,6 +48,39 @@ export class AuthService {
     } catch (error) {
       throw new UnauthorizedException();
     }
+  }
+
+  async getTokens(oAuth: OauthUser, email: string) {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwtService.signAsync(
+        {
+          sub: oAuth.accessToken,
+          email,
+        },
+        {
+          secret: this.configService.get<string>('jwt.backend.access.secret'),
+          expiresIn: this.configService.get<string>(
+            'jwt.backend.access.expire',
+          ),
+        },
+      ),
+      this.jwtService.signAsync(
+        {
+          sub: oAuth.refreshToken,
+        },
+        {
+          secret: this.configService.get<string>('jwt.backend.refresh.secret'),
+          expiresIn: this.configService.get<string>(
+            'jwt.backend.refresh.expire',
+          ),
+        },
+      ),
+    ]);
+
+    return {
+      accessToken,
+      refreshToken,
+    };
   }
 
   async validateToken(token: string): Promise<OauthUser> {

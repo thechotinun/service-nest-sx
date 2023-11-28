@@ -35,7 +35,7 @@ async function bootstrap() {
       app,
       SwaggerModule.createDocument(
         app,
-        new DocumentBuilder().setTitle('Example').setVersion('1.0').build(),
+        new DocumentBuilder().setTitle('SkinX').setVersion('1.0').build(),
       ),
       { useGlobalPrefix: true },
     );

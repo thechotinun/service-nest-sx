@@ -15,13 +15,11 @@ export class BackendAuthGuard implements CanActivate {
       'roles',
       context.getHandler(),
     );
-
     const request = context.switchToHttp().getRequest();
     const token = request.headers.authorization?.split(' ')[1];
 
     if (token) {
       const auth = await this.authService.validateToken(token);
-
       if (
         auth &&
         (!requiredRoles || requiredRoles.includes(get(auth, 'user.role')))
