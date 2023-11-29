@@ -5,7 +5,11 @@ import {
   Entity,
 } from 'typeorm';
 
-@Entity('posts')
+@Entity({
+  schema: 'public',
+  name: 'posts',
+  synchronize: false,
+})
 export class Posts {
   @PrimaryGeneratedColumn()
   id: number;

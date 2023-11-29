@@ -2,7 +2,11 @@ import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from './base-entity';
 import { OauthUser } from './o-auth-user.entity';
 
-@Entity('users')
+@Entity({
+  schema: 'public',
+  name: 'users',
+  synchronize: false,
+})
 export class User extends BaseEntity {
   @Column({ type: 'varchar', length: 100, nullable: false })
   email: string;
@@ -15,9 +19,6 @@ export class User extends BaseEntity {
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   lastName: string;
-
-  @Column({ type: 'varchar', length: 30, nullable: false })
-  salt: string;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
   role: string;
