@@ -11,6 +11,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { LoggerModule } from '@common/logger/mylogger.module';
 import { ExampleModule } from '@modules/example/example.module';
 import { PostsModule } from '@modules/posts/posts.module';
+import { UserModule } from '@modules/user/user.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { PostsModule } from '@modules/posts/posts.module';
     EventEmitterModule.forRoot(),
     ExampleModule,
     PostsModule,
+    UserModule,
   ],
   controllers: [],
   providers: [

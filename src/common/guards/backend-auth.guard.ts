@@ -24,6 +24,10 @@ export class BackendAuthGuard implements CanActivate {
         auth &&
         (!requiredRoles || requiredRoles.includes(get(auth, 'user.role')))
       ) {
+        request.user = {
+          username: 'test',
+          role: 'admin',
+        };
         return true;
       }
     }

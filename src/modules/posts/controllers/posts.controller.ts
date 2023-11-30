@@ -6,6 +6,7 @@ import { UseResources } from 'interceptors/use-resources.interceptor';
 import { PostsResourceDto } from '@modules/posts/resources/posts.resource';
 import { MyLogger } from '@common/logger/mylogger.service';
 import { BackendAuthGuard } from '@common/guards/backend-auth.guard';
+import { Roles } from '@common/decorators/roles.decorator';
 
 @UseGuards(BackendAuthGuard)
 @Controller('api/v1/posts')
@@ -16,6 +17,7 @@ export class PostsController {
   ) {}
 
   @Get()
+  @Roles('admin')
   @UseResources(PostsResourceDto)
   async paginate(
     @Query() { page, limit }: PaginateQuery,
