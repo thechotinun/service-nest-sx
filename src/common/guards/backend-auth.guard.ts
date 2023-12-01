@@ -25,8 +25,9 @@ export class BackendAuthGuard implements CanActivate {
         (!requiredRoles || requiredRoles.includes(get(auth, 'user.role')))
       ) {
         request.user = {
-          username: 'test',
+          name: 'SkinX',
           role: 'admin',
+          avatar: `https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png`,
         };
         return true;
       }
