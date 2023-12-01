@@ -3,10 +3,11 @@ import { HttpStatus } from '@nestjs/common';
 
 export class UserException extends ApiException {
   /**
+   * @param error
    * @returns ApiException
    */
-  static notFound(): ApiException {
-    throw new ApiException(100201, [], HttpStatus.OK);
+  static notFound(error?: string[]): ApiException {
+    throw new ApiException(100201, error);
   }
 
   /**

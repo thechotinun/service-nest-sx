@@ -11,5 +11,5 @@ export const ErrorCodes: { [key: number]: string } = {
   100104: 'EXAMPLE_UPDATE_ERROR',
   100105: 'EXAMPLE_EXIST',
   //
-  100106: 'EXAMPLE_NOT_FOUND',
+  100201: 'EMAIL_OR_PASSWORD_INVALID',
 };
