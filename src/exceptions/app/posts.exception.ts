@@ -6,6 +6,6 @@ export class PostsException extends ApiException {
    * @returns ApiException
    */
   static notFound(): ApiException {
-    throw new ApiException(100106, [], HttpStatus.OK);
+    throw new ApiException(100201, [], HttpStatus.OK);
   }
 }
