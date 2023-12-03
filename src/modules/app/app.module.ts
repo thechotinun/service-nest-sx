@@ -9,7 +9,6 @@ import TypeOrmConfigService from '@config/typeorm/default';
 import { ExceptionFilter } from '@exceptions/exception.filter';
 import { APP_FILTER } from '@nestjs/core';
 import { LoggerModule } from '@common/logger/mylogger.module';
-import { ExampleModule } from '@modules/example/example.module';
 import { PostsModule } from '@modules/posts/posts.module';
 import { UserModule } from '@modules/user/user.module';
 
@@ -31,7 +30,6 @@ import { UserModule } from '@modules/user/user.module';
       dest: './files',
     }),
     EventEmitterModule.forRoot(),
-    ExampleModule,
     PostsModule,
     UserModule,
   ],
