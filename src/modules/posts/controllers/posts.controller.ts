@@ -20,13 +20,23 @@ export class PostsController {
   @Roles('admin')
   @UseResources(PostsResourceDto)
   async paginate(
+    @Query()
+    query: {
+      title: string;
+      postedBy: string;
+      tags: string[];
+      postedAt: string;
+    },
     @Query() { page, limit }: PaginateQuery,
   ): Promise<ApiResource> {
     try {
-      const reponse = await this.postsService.paginate({
-        page,
-        limit,
-      });
+      const reponse = await this.postsService.paginate(
+        {
+          page,
+          limit,
+        },
+        query,
+      );
       return ApiResource.successResponse(reponse);
     } catch (error) {
       return ApiResource.errorResponse(error);
