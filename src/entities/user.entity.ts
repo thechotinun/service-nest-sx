@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany } from 'typeorm';
+import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from 'typeorm';
 import { BaseEntity } from './base-entity';
 import { OauthUser } from './o-auth-user.entity';
 
@@ -7,7 +7,10 @@ import { OauthUser } from './o-auth-user.entity';
   name: 'users',
   synchronize: false,
 })
-export class User extends BaseEntity {
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column({ type: 'varchar', length: 100, nullable: false })
   email: string;
 
